@@ -1,18 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:slimy_card/slimy_card.dart';
+import 'package:slimy_card_example/login_page.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,
-    systemNavigationBarColor: Colors.white,
-    systemNavigationBarIconBrightness: Brightness.dark,
-    systemNavigationBarDividerColor: Colors.transparent,
-  ));
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
@@ -26,10 +18,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "SlimyCard Package Example",
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: LoginPage(),
+      theme: ThemeData(primarySwatch: Colors.red),
     );
   }
 }
@@ -89,13 +82,14 @@ class _MainPageState extends State<MainPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         AnimatedContainer(
-          duration: Duration(milliseconds: 400),
-          height: isOpen ? 85 : 78,
+          duration: Duration(seconds: 5),
+          height: isOpen ? 90 : 78,
           width: isOpen ? 85 : 78,
           decoration: BoxDecoration(
+            color: Colors.black,
             borderRadius: BorderRadius.circular(isOpen ? 100 : 20),
-            image: DecorationImage(
-                image: AssetImage(imagePath), fit: BoxFit.fitHeight),
+            // image: DecorationImage(
+            //     image: AssetImage(imagePath), fit: BoxFit.fitHeight),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
